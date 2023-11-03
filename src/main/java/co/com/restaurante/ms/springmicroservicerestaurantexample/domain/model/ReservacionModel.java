@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Reservacion {
+public class ReservacionModel {
 
     private Long id;
     private String nombre;

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Orden {
+public class OrdenModel {
 
     private Long id;
     private Long platilloId;

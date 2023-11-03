@@ -7,11 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Platillo {
+public class CategoriaModel {
 
     private Long id;
     private String nombre;
-    private float precio;
-    private byte disponible;
-    private Long categoriaId;
 }
