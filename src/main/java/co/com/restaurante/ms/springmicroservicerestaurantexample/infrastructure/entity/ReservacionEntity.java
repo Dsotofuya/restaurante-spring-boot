@@ -23,6 +23,15 @@ public class ReservacionEntity {
     private LocalTime hora;
     private LocalDate fecha;
     private Long cantidadMesa;
-    @ManyToMany(mappedBy = "reservaciones")
+    @ManyToMany(cascade = {
+                    CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.REFRESH,
+                    CascadeType.PERSIST }
+            , fetch = FetchType.EAGER/*, mappedBy = "reservaciones"*/)
+    @JoinTable(name = "ordenes", inverseJoinColumns = @JoinColumn(name = "idPlatillo", referencedColumnName = "id_platillo",
+            foreignKey = @ForeignKey(name = "platillo_orden_fk")),
+            joinColumns = @JoinColumn(name = "idReservacion",
+                    referencedColumnName = "id_reservacion", foreignKey = @ForeignKey(name = "reservacion_orden_fk")))
     private List<PlatilloEntity> platillos;
 }

@@ -18,6 +18,6 @@ public class CategoriaEntity {
     @Column (name = "id_categoria"/*, insertable=false, updatable=false*/)
     private Long idCategoria;
     private String nombre;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "categoria")
     private List<PlatilloEntity> platillos;
 }
