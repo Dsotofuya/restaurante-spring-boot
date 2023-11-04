@@ -1,49 +1,54 @@
 package co.com.restaurante.ms.springmicroservicerestaurantexample.infrastructure.adapters;
 
 import co.com.restaurante.ms.springmicroservicerestaurantexample.domain.model.CategoriaModel;
+import co.com.restaurante.ms.springmicroservicerestaurantexample.domain.model.ReservacionModel;
 import co.com.restaurante.ms.springmicroservicerestaurantexample.domain.ports.CategoriaPersistencePort;
+import co.com.restaurante.ms.springmicroservicerestaurantexample.domain.ports.ReservacionPersistencePort;
 import co.com.restaurante.ms.springmicroservicerestaurantexample.infrastructure.entity.CategoriaEntity;
+import co.com.restaurante.ms.springmicroservicerestaurantexample.infrastructure.entity.ReservacionEntity;
 import co.com.restaurante.ms.springmicroservicerestaurantexample.infrastructure.mappers.CategoriaMapper;
+import co.com.restaurante.ms.springmicroservicerestaurantexample.infrastructure.mappers.ReservacionMapper;
 import co.com.restaurante.ms.springmicroservicerestaurantexample.infrastructure.repository.CategoriaRepository;
+import co.com.restaurante.ms.springmicroservicerestaurantexample.infrastructure.repository.ReservacionRepository;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ReservacionJpaAdapter implements CategoriaPersistencePort {
+public class ReservacionJpaAdapter implements ReservacionPersistencePort {
 
-    private final CategoriaRepository categoriaRepository;
+    private final ReservacionRepository reservacionRepository;
 
     @Override
-    public CategoriaModel addCategoria(CategoriaModel categoriaModel) {
-        CategoriaEntity categoriaEntity =
-                CategoriaMapper.INSTANCE.mapToCategoriaEntity(categoriaModel);
-        CategoriaEntity categoriaSaved = this.categoriaRepository.save(categoriaEntity);
-        return CategoriaMapper.INSTANCE.mapToCategoriaModel(categoriaSaved);
+    public ReservacionModel addReservacion(ReservacionModel reservacionModel) {
+        ReservacionEntity reservacionEntity = ReservacionMapper.INSTANCE.mapToReservacionEntity(reservacionModel);
+        ReservacionEntity reservacionSaved = this.reservacionRepository.save(reservacionEntity);
+        return ReservacionMapper.INSTANCE.mapToReservacionModel(reservacionSaved);
     }
 
     @Override
-    public CategoriaModel updateCategoria(CategoriaModel categoriaModel) {
-        return addCategoria(categoriaModel);
+    public ReservacionModel updateReservacion(ReservacionModel reservacionModel) {
+        return addReservacion(reservacionModel);
     }
 
     @Override
-    public void deleteCategoria(Long id) {
-        this.categoriaRepository.deleteById(id);
+    public void deleteReservacion(Long id) {
+        this.reservacionRepository.deleteById(id);
     }
 
     @Override
-    public List<CategoriaModel> getCategorias() {
-        return CategoriaMapper.INSTANCE.mapToCategoriaModelList(
-                this.categoriaRepository.findAll());
+    public List<ReservacionModel> getReservaciones() {
+        return ReservacionMapper.INSTANCE.mapToReservacionModelList(
+                this.reservacionRepository.findAll());
     }
 
     @Override
-    public CategoriaModel getCategoriaById(Long id) {
-        return this.categoriaRepository.findById(id)
-                .map(CategoriaMapper.INSTANCE::mapToCategoriaModel)
+    public ReservacionModel getReservacionById(Long id) {
+        return this.reservacionRepository.findById(id).map(
+                ReservacionMapper.INSTANCE::mapToReservacionModel)
                 .orElse(null);
     }
 }
