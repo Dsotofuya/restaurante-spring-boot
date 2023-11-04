@@ -34,7 +34,7 @@ public class CategoriaServiceImpl implements CategoriaServicePort {
         Optional<CategoriaModel> existCategoria =  Optional.ofNullable(
                 this.categoriaPersistencePort.getCategoriaById(id));
         this.categoriaPersistencePort.deleteCategoria(
-                existCategoria.orElseThrow(CategoriaNotFoundException::new).getId());
+                existCategoria.orElseThrow(CategoriaNotFoundException::new).getIdCategoria());
     }
 
     @Override

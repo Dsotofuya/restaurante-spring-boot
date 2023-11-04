@@ -12,7 +12,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class ReservacionModel {
 
-    private Long id;
+    private Long idReservacion;
     private String nombre;
     private String apellido;
     private LocalTime hora;

@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoriaModel {
 
-    private Long id;
+    private Long idCategoria;
     private String nombre;
 }

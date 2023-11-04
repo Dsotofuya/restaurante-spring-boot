@@ -28,8 +28,9 @@ public class PlatilloServiceImpl implements PlatilloServicePort {
     @Override
     public void deletePlatillo(Long id) throws BusinessException {
         this.platilloPersistencePort.deletePlatillo(
-                Optional.ofNullable(this.platilloPersistencePort.getPlatilloById(id))
-                        .orElseThrow(PlatilloNotFoundException::new).getId());
+                Optional.ofNullable(
+                        this.platilloPersistencePort.getPlatilloById(id)
+                ).orElseThrow(PlatilloNotFoundException::new).getIdPlatillo());
     }
 
     @Override

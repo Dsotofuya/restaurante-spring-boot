@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrdenModel {
 
-    private Long id;
+    private Long idOrden;
     private Long platilloId;
     private Long reservacionId;
 }

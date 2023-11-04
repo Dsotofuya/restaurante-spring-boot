@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PlatilloModel {
 
-    private Long id;
+    private Long idPlatillo;
     private String nombre;
     private float precio;
     private byte disponible;

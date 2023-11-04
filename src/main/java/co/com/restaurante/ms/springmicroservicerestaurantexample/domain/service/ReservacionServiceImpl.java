@@ -28,8 +28,8 @@ public class ReservacionServiceImpl implements ReservacionServicePort {
     public void deleteReservacion(Long id) throws BusinessException {
         this.reservacionPersistencePort.deleteReservacion(
                 Optional.ofNullable(
-                        this.reservacionPersistencePort.getReservacionById(id))
-                        .orElseThrow(ReservacionNotFoundException::new).getId());
+                        this.reservacionPersistencePort.getReservacionById(id)).
+                        orElseThrow(ReservacionNotFoundException::new).getIdReservacion());
     }
 
     @Override

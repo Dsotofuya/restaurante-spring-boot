@@ -27,8 +27,8 @@ public class OrdenServiceImpl implements OrdenServicePort {
     public void deleteOrden(Long id) throws BusinessException {
         Optional<OrdenModel> ordenExist = Optional.ofNullable(
                 this.ordenPersistencePort.getOrdenById(id));
-        this.ordenPersistencePort.deleteOrden(ordenExist
-                .orElseThrow(OrdenNotFoundException::new).getId());
+        this.ordenPersistencePort.deleteOrden(
+                ordenExist.orElseThrow(OrdenNotFoundException::new).getIdOrden());
     }
 
     @Override
