@@ -11,9 +11,13 @@ spring:
     username: ${USERNAME}
     password: ${PASSWORD}
   jpa:
+    open-in-view: true
+    show-sql: true
     hibernate:
       ddl-auto: update
       database-platform: org.hibernate.dialect.MySQL8InnoDBDialect
-      #show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   jackson:
     time-zone: America/Bogota
